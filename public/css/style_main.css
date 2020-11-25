@@ -63,9 +63,13 @@ small {
   width: 100%;
   padding: 2vh;
 }
+.v1, .v2 {
+  border: 1px solid;
+}
 .ficha > ul > li:hover > a {
   text-decoration: none;
 }
+
 #principal {
   display: grid;
   gap: 2vh;
@@ -289,7 +293,8 @@ a:hover {
   margin: 0 5px;
 }
 .rrss li > a:hover {
-  transform: translateY(-3px) scale(1.5);
+  transition-duration: 0.2s;
+  transform: scale(1.5);
 }
 .rrss li > a > i {
   font-size: 20px;
@@ -366,7 +371,7 @@ input:checked + .slider:before {
   text-align: center;
 }
 .btnanim:active {
-  opacity: 0.8;
+  opacity: 0.3;
 }
 .btnanim:before {
   content: "";
