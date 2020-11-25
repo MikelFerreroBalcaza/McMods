@@ -1,0 +1,13 @@
+App:
+  Title: 'McMods Translator'
+Header:
+  Language: 
+    Lang: 'Idioma'
+    Spanish: 'Español'
+    English: 'Ingles'
+  Help: 'Ayuda'
+  Contact: 'Contacto'
+  Title: 'McMods Translator'
+  Theme: 'Modo Oscuro'
+Footer:
+  Copyright: '© 2020 Copyright'

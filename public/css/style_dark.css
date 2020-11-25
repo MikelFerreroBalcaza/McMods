@@ -1,0 +1,141 @@
+:root {
+  --bg-color: #ffffff;
+  --main-bg-color: #363a3f;
+  --btn-bg-color: #f9c559;
+  --bg: #2a2e32;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --gradient-dark: #2c2c34;
+  --gradient-light: #1779ff;
+}
+
+html,
+.ficha,
+.slider,
+#info,
+.sectiontranslator,
+.ficha {
+  background-color: var(--bg);
+}
+
+body,
+small,
+a,
+#menuToggle a {
+  color: var(--bg-color);
+}
+
+textarea,
+input {
+  color: var(--bg-color);
+  background-color: var(--main-bg-color);
+}
+
+.slider,
+#principal,
+main,
+#menu {
+  background-color: var(--main-bg-color);
+}
+
+#menuToggle a:hover {
+  text-decoration: underline;
+}
+
+#menuToggle span,
+#menuToggle input:checked ~ span,
+.slider:before {
+  background-color: var(--bg-color);
+}
+
+input:checked + .slider {
+  background-color: var(--btn-bg-color);
+}
+
+input:focus + .slider {
+  box-shadow: var(--btn-bg-color);
+}
+
+#menu,
+.btnanim:hover {
+  box-shadow: 0 20px 50px var(--shadow);
+}
+
+.btnanim:hover span:nth-child(1) {
+  background: linear-gradient(
+    to right,
+    var(--gradient-dark),
+    var(--gradient-light)
+  );
+}
+
+.btnanim:hover span:nth-child(2) {
+  background: linear-gradient(
+    to bottom,
+    var(--gradient-dark),
+    var(--gradient-light)
+  );
+}
+
+#enlaces > ul {
+  border-right: solid 5px var(--bg-color);
+}
+
+.btnanim:hover span:nth-child(3) {
+  background: linear-gradient(
+    to left,
+    var(--gradient-dark),
+    var(--gradient-light)
+  );
+}
+
+.btnanim:hover span:nth-child(4) {
+  background: linear-gradient(
+    to top,
+    var(--gradient-dark),
+    var(--gradient-light)
+  );
+}
+
+.rrss li:nth-child(1):hover > a > i {
+  color: #3b5999;
+}
+
+.rrss li:nth-child(2):hover > a > i {
+  color: #55acee;
+}
+
+.rrss li:nth-child(3):hover > a > i {
+  color: #e4405f;
+}
+
+.sectiontranslator {
+  border: solid 1px var(--bg-color);
+}
+
+.fa-check-circle {
+  color: green;
+}
+
+.fa-dot-circle {
+  color: orange;
+}
+
+.fa-times-circle {
+  color: red;
+}
+
+.fa-retweet {
+  color: #15aabf;
+}
+
+.checked {
+  background-color: rgba(0, 128, 0, 0.5);
+}
+
+.review {
+  background-color: rgb(255, 167, 0, 0.5);
+}
+
+.delete {
+  background-color: rgba(255, 0, 0, 0.5);
+}

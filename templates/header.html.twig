@@ -1,0 +1,41 @@
+<header>
+	<nav id='navigation'>
+		<div id='menuToggle'>
+			<input type='checkbox'/>
+			<span></span>
+			<span></span>
+			<span></span>
+			<ul id='menu'>
+				<li>{{"Header.Language.Lang" | trans({}, 'translationsUI')}}
+					<ul id='lang'>
+						<li class='lang' id='es-ES'>
+							<a href='/es-ES/'>
+								{{"Header.Language.Spanish" | trans({}, 'translationsUI')}}
+							</a>
+						</li>
+						<li class='lang' id='en-GB'>
+							<a href='/en-GB/'>
+								{{"Header.Language.English" | trans({}, 'translationsUI')}}
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href='#'>{{"Header.Help" | trans({}, 'translationsUI')}}</a>
+				</li>
+				<li>
+					<a href='#'>{{"Header.Contact" | trans({}, 'translationsUI')}}</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<h1 class='hide'>{{"Header.Title" | trans({}, 'translationsUI')}}</h1>
+	<a href="index.php"><img src='{{ asset('img/McMods-Alfa.png') }}' alt='McMods Translator'></a>
+	<div id='conten_mode'>
+		<i>{{"Header.Theme" | trans({}, 'translationsUI')}}</i>
+		<label class='switch'>
+			<input type='checkbox' checked id='btn_mode'>
+			<span class='slider round'></span>
+		</label>
+	</div>
+</header>

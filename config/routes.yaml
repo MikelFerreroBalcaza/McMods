@@ -1,0 +1,7 @@
+index:
+  path: /{_locale}
+  controller: App\Controller\IndexController::index
+  defaults:
+    _locale: es-ES
+  requirements:
+    _locale: es-ES|es-MX|en-GB|en-US

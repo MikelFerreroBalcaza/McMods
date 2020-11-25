@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section id='principal'>
+            <form enctype='multipart/form-data' action='translator.php' method='POST'>
+                <div class='ficha'>
+                    <ul>
+                        <li>
+                            <label id='label-file' for='userfile' class='btnanim v1'>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i>{{"Index.OpenFile" | trans({}, 'translationsUI')}}</i><input type='file' id='userfile' name='userfile' class='hide' accept='.jar,.zip,.rar,.7z' required>
+                            </label>
+                        </li>
+                        <li></li>
+                        <li><label for='sub' class='btnanim v1'>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{"Index.Translate" | trans({}, 'translationsUI')}}
+                                <input type='submit' class='hide' id='sub' name='sub'>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <div class='ficha'>
+                <ul>
+                    <li><a href='' class='btnanim v2'>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>{{"Index.Tutorial" | trans({}, 'translationsUI')}}</a></li>
+                    <li><a href='' class='btnanim v2'>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>{{"Index.About" | trans({}, 'translationsUI')}}</a></li>
+                    <li><a href='' class='btnanim v2'>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>{{"Index.Contact" | trans({}, 'translationsUI')}}</a></li>
+                </ul>
+            </div>
+        </section>
+        <section id='info'>
+            <div id='enlaces'>
+                <ul>
+                    <li><a href=''>{{"Index.Development" | trans({}, 'translationsUI')}}</a></li>
+                    <li><a href=''>{{"Index.DataProtection" | trans({}, 'translationsUI')}}</a></li>
+                    <li><a href=''>{{"Index.Equipment" | trans({}, 'translationsUI')}}</a></li>
+                    <li><a href=''>{{"Index.LegalWarning" | trans({}, 'translationsUI')}}</a></li>
+                </ul>
+            </div>
+            <div id='div-rrss'>
+                <div>
+                    <h1>{{"Index.FollowUs" | trans({}, 'translationsUI')}}</h1>
+                    <ul class='rrss'>
+                        <li><a href=''>{{"Index.Facebook" | trans({}, 'translationsUI')}}<i class='fab fa-facebook-f'></i></a></li>
+                        <li><a href=''>{{"Index.Twitter" | trans({}, 'translationsUI')}}<i class='fab fa-twitter'></i></a></li>
+                        <li><a href=''>{{"Index.Instagram" | trans({}, 'translationsUI')}}<i class='fab fa-instagram'></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
