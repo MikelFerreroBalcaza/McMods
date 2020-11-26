@@ -13,12 +13,14 @@
 		{% block title %}{% endblock %}
 	</head>
 	<body>
+		{% include "loader.html.twig" %}
 		{% include "header.html.twig" %}
 		{% block body %}{% endblock %}
         {% include "footer.html.twig" %}
 		{% block javascripts %}
 			<script src='{{ asset('js/form.js') }}'></script>
 			<script src='{{ asset('js/mode.js') }}'></script>
+			<script src='{{ asset('js/loader.js') }}'></script>
 		{% endblock %}
 	</body>
 </html>

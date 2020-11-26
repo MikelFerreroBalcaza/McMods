@@ -63,7 +63,8 @@ small {
   width: 100%;
   padding: 2vh;
 }
-.v1, .v2 {
+.v1,
+.v2 {
   border: 1px solid;
 }
 .ficha > ul > li:hover > a {
@@ -476,6 +477,73 @@ input:checked + .slider:before {
   }
   100% {
     transform: translateY(-100%);
+  }
+}
+/** LOADER **/
+
+#css-loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 99999999999999999999999999999999999;
+  top: 0;
+}
+.txt-loader {
+  position: absolute;
+  color: white;
+  font-weight: bolder;
+  font-size: 200%;
+  width: 100%;
+  text-align: center;
+  top: 72vh;
+}
+.txt-loader::after {
+  content: "";
+  animation: dott 2s infinite;
+}
+#css-loader .caja-loader {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.3);
+  top: calc(50vh - 200px);
+  left: calc(50% - 200px);
+  border: 13px solid #f2f2f2;
+  border-radius: 30%;
+  animation: spin 4s linear infinite;
+}
+#css-loader .caja-loader .spinner {
+  border: 13px solid #f2f2f2;
+  border-radius: 40%;
+  width: 200px;
+  height: 200px;
+  animation: spin 5s linear infinite;
+  position: absolute;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  z-index: 4;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dott {
+  25% {
+    content: "";
+  }
+  50% {
+    content: ".";
+  }
+  75% {
+    content: "..";
+  }
+  100% {
+    content: "...";
   }
 }
 
