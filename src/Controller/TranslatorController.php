@@ -36,8 +36,8 @@ class TranslatorController extends AbstractController
                     dirLang($_SESSION['ruta_extraido'] . '/');
                 }
             }
-        } else $error = 2;
-        return $this->render('translator/translator.html.twig', [
+        } else print $error = 2;
+        return $this->render('translator/selectorLanguage.html.twig', [
             'errorCode' => $error,
             'sesion' => $_SESSION,
         ]);
