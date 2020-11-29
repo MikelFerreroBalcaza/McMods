@@ -2,6 +2,9 @@ index:
   path: /{_locale}
   controller: App\Controller\IndexController::index
   defaults:
-    _locale: es-ES
+    _locale: es
   requirements:
-    _locale: es-ES|es-MX|en-GB|en-US
+    _locale: es|en
+translator:
+  path: /translator
+  controller: App\Controller\TranslatorController::index

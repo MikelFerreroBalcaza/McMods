@@ -1,7 +1,7 @@
 App:
   Title: 'McMods Translator'
 Header:
-  Language: 
+  Language:
     Lang: 'Language'
     Spanish: 'Spanish'
     English: 'English'
@@ -11,3 +11,17 @@ Header:
   Theme: 'Dark mode'
 Footer:
   Copyright: '© 2020 Copyright'
+Index:
+  OpenFile: 'Open file...'
+  Translate: 'Translate'
+  Tutorial: 'Tutorial'
+  About: 'About...'
+  Contact: 'Contact'
+  Development: 'Development'
+  DataProtection: 'Data Protection'
+  Equipment: 'Equipment'
+  LegalWarning: 'Legal warning'
+  FollowUs: 'Follow us'
+  Facebook: 'Facebook'
+  Twitter: 'Twitter'
+  Instagram: 'Instagram'

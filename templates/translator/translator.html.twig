@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
+{% endblock %}
+
+{% block body %}
+	{% if errorCode == 0 %}
+		<section class="sectiontranslator">
+			<form action="/translator" method="post">
+				<label for="lang1">{{"Translator.Language1" | trans({}, 'translationsUI')}}</label>
+				<select name="lang1" id="lang1">';
+					{% for langfile in sesion.langfiles %}
+						{% if langfile != '.' and langfile != '..' %}
+							<option value="{{langfile}}" {% if langfile =='en_us.lang' %} selected {% endif %}>{{langfile}}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+				<label for="lang2">{{"Translator.Language2" | trans({}, 'translationsUI')}}</label>
+				<select name="lang2" id="lang2">
+					<option value="new">{{"Translator.LanguageNew" | trans({}, 'translationsUI')}}</option>
+					{% for langfile in sesion.langfiles %}
+						{% if langfile != '.' and langfile != '..' %}
+							<option value="{{langfile}}" {% if langfile =='es_es.lang' %} selected {% endif %}>{{langfile}}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+				<input type="submit" value="{{"Translator.Translate" | trans({}, 'translationsUI')}}" name="langform">
+			</form>
+		</section>
+	{% elseif errorCode == 1 %}
+		{{"Translator.Error1" | trans({}, 'translationsUI')}}
+	{% elseif errorCode == 2 %}
+		{{"Translator.Error2" | trans({}, 'translationsUI')}}
+	{% endif %}
+{% endblock %}
