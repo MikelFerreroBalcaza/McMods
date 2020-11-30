@@ -1,34 +1,44 @@
 App:
-  Title: 'McMods Translator'
+  Title: "McMods Translator"
 Header:
   Language:
-    Lang: 'Idioma'
-    Spanish: 'Español'
-    English: 'Ingles'
-  Help: 'Ayuda'
-  Contact: 'Contacto'
-  Title: 'McMods Translator'
-  Theme: 'Modo Oscuro'
+    Lang: "Idioma"
+    Spanish: "Español"
+    English: "Ingles"
+  Help: "Ayuda"
+  Contact: "Contacto"
+  Title: "McMods Translator"
+  Theme: "Modo Oscuro"
 Footer:
-  Copyright: '© 2020 Copyright'
+  Copyright: "© 2020 Copyright"
 Index:
-  OpenFile: 'Abrir archivo...'
-  Translate: 'Traducir'
-  Tutorial: 'Tutorial'
-  About: 'Acerca de...'
-  Contact: 'Contacto'
-  Development: 'Desarrollo'
-  DataProtection: 'Protección de datos'
-  Equipment: 'Equipo'
-  LegalWarning: 'Aviso legal'
-  FollowUs: 'Siguenos'
-  Facebook: 'Facebook'
-  Twitter: 'Twitter'
-  Instagram: 'Instagram'
+  OpenFile: "Abrir archivo..."
+  Translate: "Traducir"
+  Tutorial: "Tutorial"
+  About: "Acerca de..."
+  Contact: "Contacto"
+  Development: "Desarrollo"
+  DataProtection: "Protección de datos"
+  Equipment: "Equipo"
+  LegalWarning: "Aviso legal"
+  FollowUs: "Siguenos"
+  Facebook: "Facebook"
+  Twitter: "Twitter"
+  Instagram: "Instagram"
 Translator:
-  Error1: 'La extensión del archivo no es correcta. Se permiten archivos .jar, .7z o .zip'
-  Error2: 'Ocurrió algún error al subir el fichero. No pudo guardarse.'
-  Language1: 'Idioma a traducir'
-  Language2: 'Idioma al que traducir'
-  LanguageNew: 'Idioma Nuevo'
-  Translate: 'Traducir'
+  Error1: "La extensión del archivo no es correcta. Se permiten archivos .jar, .7z o .zip"
+  Error2: "Ocurrió algún error al subir el fichero. No pudo guardarse."
+  Language1: "Idioma a traducir"
+  Language2: "Idioma al que traducir"
+  LanguageNew: "Idioma Nuevo"
+  Translate: "Traducir"
+  ModName: "Nombre"
+  ModAuthor: "Autor"
+  ModVersion: "Versión"
+  GameVersion: "Minecraft"
+  ModTranslator: "Traductor"
+  ModTranslateVersion: "Versión traducción"
+  LanguageCode: "Código"
+  Placeholder: "Código del idioma"
+  SubmitMensaje: "Solo las lineas verificadas (marcadas en verde) serán incluidas en la traducción"
+  Submit: "Finalizar"

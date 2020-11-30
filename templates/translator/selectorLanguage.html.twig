@@ -10,18 +10,18 @@
 			<form action="/translator" method="post">
 				<label for="lang1">{{"Translator.Language1" | trans({}, 'translationsUI')}}</label>
 				<select name="lang1" id="lang1">';
-					{% for langfile in sesion.langfiles %}
-						{% if langfile != '.' and langfile != '..' %}
-							<option value="{{langfile}}" {% if langfile =='en_us.lang' %} selected {% endif %}>{{langfile}}</option>
+					{% for langFile in langFiles %}
+						{% if langFile != '.' and langFile != '..' %}
+							<option value="{{langFile}}" {% if langFile =='en_us.lang' %} selected {% endif %}>{{langFile|slice(0, 5)}}</option>
 						{% endif %}
 					{% endfor %}
 				</select>
 				<label for="lang2">{{"Translator.Language2" | trans({}, 'translationsUI')}}</label>
 				<select name="lang2" id="lang2">
 					<option value="new">{{"Translator.LanguageNew" | trans({}, 'translationsUI')}}</option>
-					{% for langfile in sesion.langfiles %}
-						{% if langfile != '.' and langfile != '..' %}
-							<option value="{{langfile}}" {% if langfile =='es_es.lang' %} selected {% endif %}>{{langfile}}</option>
+					{% for langFile in langFiles %}
+						{% if langFile != '.' and langFile != '..' %}
+							<option value="{{langFile}}" {% if langFile =='es_es.lang' %} selected {% endif %}>{{langFile|slice(0, 5)}}</option>
 						{% endif %}
 					{% endfor %}
 				</select>

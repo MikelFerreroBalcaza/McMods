@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
+{% endblock %}
+
+{% block body %}
+	<pre>
+        {{ dump() }}
+    </pre>
+	<form action="./generator.php" method="post">
+		<section class="sectiontranslator">
+			{% if mcmodInfo is defined %}
+				<section class="sectiontranslator">
+					<table>
+						<tbody>
+							<tr>
+								<th>{{"Translator.ModName" | trans({}, 'translationsUI')}}</th>
+								<th>{{"Translator.ModAuthor" | trans({}, 'translationsUI')}}</th>
+								<th>{{"Translator.ModVersion" | trans({}, 'translationsUI')}}</th>
+								<th>{{"Translator.GameVersion" | trans({}, 'translationsUI')}}</th>
+								<th>
+									<label for="modtranslator">{{"Translator.ModTranslator" | trans({}, 'translationsUI')}}</label>
+								</th>
+								<th>
+									<label for="modtranslationversion">{{"Translator.ModTranslateVersion" | trans({}, 'translationsUI')}}</label>
+								</th>
+							</tr>
+							<tr>
+								<td>{{mcmodInfo.name}}</td>
+								<td>
+									{% for author in mcmodInfo.authorList %}
+										{{author}}
+										{% if loop.index !=  mcmodInfo.authorList|length %}
+											,
+										{% endif %}
+									{% endfor %}
+								</td>
+								<td>{{mcmodInfo.version}}</td>
+								<td>{{mcmodInfo.mcversion}}</td>
+								<td><input type='text' name='modtranslator' id='modtranslator'></td>
+								<td><input type='text' name='modtranslationversion' id='modtranslationversion'></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			{% else %}
+				<section class="sectiontranslator">
+					<table>
+						<tbody>
+							<tr>
+								<th>
+									<label for="modtranslator">{{"Translator.ModTranslator" | trans({}, 'translationsUI')}}</label>
+								</th>
+								<th>
+									<label for="modtranslationversion">{{"Translator.ModTranslateVersion" | trans({}, 'translationsUI')}}</label>
+								</th>
+							</tr>
+							<tr>
+								<td><input type="text" name="modtranslator" id="modtranslator"></td>
+								<td><input type="text" name="modtranslationversion" id="modtranslationversion"></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			{% endif %}
+			<br>
+			<section class='sectiontranslator'>
+				<table id='tblcodetranslate'>
+					<thead>
+						<tr>
+							<th>{{"Translator.LanguageCode" | trans({}, 'translationsUI')}}</th>
+							<th>{{request.lang1|slice(0, 5)}}</th>
+							<th>
+								{% if request.lang2 == 'new' %}
+									<input type="text" name="langtranslate" id="langtranslate" placeholder="{{"Translator.Placeholder" | trans({}, 'translationsUI')}}">
+								{% else %}
+									{{request.lang2|slice(0, 5)}}
+								{% endif %}
+							</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for key,item in arrLang1 %}
+							{% set setTranslate = 0 %}
+							{% if key in arrLang2|keys %}
+								{% set setTranslate = 1 %}
+							{% endif %}
+							<tr class="tabletr {% if setTranslate == 1 %}{% if setTranslate == 1 %}review{% endif %}{% endif %}">
+								<td class="columcode">
+									{{key}}
+								</td>
+								<td>
+									<textarea class="{% if setTranslate == 1 %}review{% endif %}" name="{{key}}lang1" id="{{key}}lang1" cols="10" rows="1" readonly>{{item}}</textarea>
+								</td>
+								<td>
+									<textarea class="{% if setTranslate == 1 %}review{% endif %}" name="{{key}}lang2" id="{{key}}lang2" cols="10" rows="1">{% if setTranslate == 1 %}{% for key2,item2 in arrLang2 %}{% if key2 == key %}{{item2}}{% endif %}{% endfor %}{% endif %}</textarea>
+								</td>
+								<td>
+									<button>
+										<i class="fas fa-retweet"></i>
+									</button>
+								</td>
+								<td>
+									<input type="radio" name="{{key}}radio" id="{{key}}radio1" value="checked" class="hide"><label for="{{key}}radio1">
+										<i class="far fa-check-circle"></i>
+									</label><input type="radio" checked name="{{key}}radio" id="{{key}}radio2" value="{% if setTranslate == 1 %}review{% endif %}" class="hide"><label for="{{key}}radio2">
+										<i class="far fa-dot-circle"></i>
+									</label><input type="radio" name="{{key}}radio" id="{{key}}radio3" value="delete" class="hide"><label for="{{key}}radio3">
+										<i class="far fa-times-circle"></i>
+									</label>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</section>
+			<br>
+			<section class='sectiontranslator'>
+				<small>{{"Translator.SubmitMensaje" | trans({}, 'translationsUI')}}</small>
+				<br>
+				<br>
+				<input type='submit' value='{{"Translator.Submit" | trans({}, ' translationsui')}}'>
+			</section>
+			<br>
+		</form>
+	{% endblock %}
