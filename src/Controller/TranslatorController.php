@@ -50,9 +50,11 @@ class TranslatorController extends AbstractController
             if ($session->get('langFile') == '.lang') {
                 $lang1 = $_REQUEST['lang1'];
                 $lang2 = $_REQUEST['lang2'];
+                $session->set('lang1', $lang1);
+                $session->set('lang2', $lang2);
                 $arrLang2 = [];
                 if (!(strtolower($lang2) == strtolower('new'))) {
-                    $lang2 = $_SESSION['langdir'] . $lang2;
+                    $lang2 = $session->get('langDir') . $lang2;
                     $fp2 = fopen($lang2, 'r');
                     while (!feof($fp2)) {
                         $line = fgets($fp2);
@@ -68,7 +70,7 @@ class TranslatorController extends AbstractController
                 }
                 $arrLang1 = [];
                 if (!(strtolower($lang2) == strtolower('new'))) {
-                    $lang1 = $_SESSION['langdir'] . $lang1;
+                    $lang1 = $session->get('langDir') . $lang1;
                     $fp1 = fopen($lang1, 'r');
                     while (!feof($fp1)) {
                         $line = fgets($fp1);
@@ -82,6 +84,10 @@ class TranslatorController extends AbstractController
                         }
                     }
                 }
+                $lang1 = $_REQUEST['lang1'];
+                $lang2 = $_REQUEST['lang2'];
+                $session->set('lang1', $lang1);
+                $session->set('lang2', $lang2);
             } elseif ($session->get('langFile') == '.json') {
             } else {
             }
@@ -91,6 +97,9 @@ class TranslatorController extends AbstractController
                 'langFile' => $session->get('langFile'),
                 'arrLang1' => $arrLang1,
                 'arrLang2' => $arrLang2,
+                'lang1'=> $session->get('lang1'),
+                'lang2'=> $session->get('lang2'),
+                'session' => $session->all(),
 
             ]);
         }

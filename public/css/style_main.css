@@ -136,11 +136,13 @@ tr.tabletr>td:nth-child(5)>label:nth-child(4)>i:nth-child(1) {
   margin: 0 1vh 0 1vh;
 }
 
-#tblcodetranslate i {
+#tblcodetranslate i,
+#tblcodetranslate svg {
   font-size: 20px;
 }
 
-#tblcodetranslate i:hover {
+#tblcodetranslate i:hover,
+#tblcodetranslate svg:hover {
   transform: translateY(-3px) scale(1.5);
 }
 

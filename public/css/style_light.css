@@ -42,16 +42,16 @@ main,
 }
 
 #menuToggle span,
-#menuToggle input:checked ~ span,
+#menuToggle input:checked~span,
 .slider:before {
   background-color: var(--bg-color);
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--btn-bg-color);
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: var(--btn-bg-color);
 }
 
@@ -62,50 +62,42 @@ input:focus + .slider {
 }
 
 .btnanim:hover span:nth-child(1) {
-  background: linear-gradient(
-    to right,
-    var(--gradient-dark),
-    var(--gradient-light)
-  );
+  background: linear-gradient(to right,
+      var(--gradient-dark),
+      var(--gradient-light));
 }
 
 .btnanim:hover span:nth-child(2) {
-  background: linear-gradient(
-    to bottom,
-    var(--gradient-dark),
-    var(--gradient-light)
-  );
+  background: linear-gradient(to bottom,
+      var(--gradient-dark),
+      var(--gradient-light));
 }
 
-#enlaces > ul {
+#enlaces>ul {
   border-right: solid 5px var(--bg-color);
 }
 
 .btnanim:hover span:nth-child(3) {
-  background: linear-gradient(
-    to left,
-    var(--gradient-dark),
-    var(--gradient-light)
-  );
+  background: linear-gradient(to left,
+      var(--gradient-dark),
+      var(--gradient-light));
 }
 
 .btnanim:hover span:nth-child(4) {
-  background: linear-gradient(
-    to top,
-    var(--gradient-dark),
-    var(--gradient-light)
-  );
+  background: linear-gradient(to top,
+      var(--gradient-dark),
+      var(--gradient-light));
 }
 
-.rrss li:nth-child(1):hover > a > i {
+.rrss li:nth-child(1):hover>a>i {
   color: #3b5999;
 }
 
-.rrss li:nth-child(2):hover > a > i {
+.rrss li:nth-child(2):hover>a>i {
   color: #55acee;
 }
 
-.rrss li:nth-child(3):hover > a > i {
+.rrss li:nth-child(3):hover>a>i {
   color: #e4405f;
 }
 

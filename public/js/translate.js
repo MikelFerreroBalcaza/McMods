@@ -2,32 +2,30 @@ $('#tblcodetranslate').on('click', 'button', function (e) {
     let txtarea = $(this).parent().prev().children();
     let tr = $(this).parent().parent();
     let txtarea2 = $(this).parent().prev().prev().children();
-    let lang = '';
+    let lang1 = '';
+    let lang2 = '';
     if ($('#langtranslate').length) {
-        lang = $('#langtranslate').val()
+        lang1 = $('#langtranslate').val()
     }
     e.preventDefault();
+    showLoader();
     $.ajax({
         type: "POST",
-        url: 'php/funciones_AJAX.php',
+        url: '/ajax',
         data: {
-            lang: lang,
+            lang1: lang1,
             text: $(this).parent().prev().prev().children().text()
         },
         success: function (response) {
             let arr = JSON.parse(response);
-            if (arr['LANGUAGEPLACEHOLDER'] == false) {
-                alert(arr['TRANSLATOR_LANGUAGEALERTSETLANG'])
-            } else {
-                txtarea.val(arr['RESULT']);
-                txtarea.removeClass();
-                txtarea.addClass('review');
-                txtarea2.removeClass();
-                txtarea2.addClass('review');
-                tr.removeClass();
-                tr.addClass('tabletr review');
-            }
-
+            txtarea.val(arr['result']);
+            txtarea.removeClass();
+            txtarea.addClass('review');
+            txtarea2.removeClass();
+            txtarea2.addClass('review');
+            tr.removeClass();
+            tr.addClass('tabletr review');
+            hideLoader();
         }
     });
 

@@ -8,3 +8,6 @@ index:
 translator:
   path: /translator
   controller: App\Controller\TranslatorController::index
+ajax:
+  path: /ajax
+  controller: App\Controller\AjaxController::ajax
