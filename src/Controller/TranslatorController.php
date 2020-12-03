@@ -18,19 +18,19 @@ class TranslatorController extends AbstractController
      */
     public function index(Request $request): Response
     {
+
         $session = $request->getSession();
         $error = 0;
-        if (!isset($_REQUEST['langform'])) {
-            if (isset($_FILES['userfile'])) {
-                $session->set('fileName', $_FILES['userfile']['name']);
-                $session->set('fileRout', $_FILES['userfile']['tmp_name']);
+        if (!$request->get('langform')) {
+            if ($request->files->get('userfile')) {
+                $session->set('fileName', $request->files->get('userfile')->getClientOriginalName());
+                $session->set('fileRout', $request->files->get('userfile')->getPathName());
             }
             $nombre_archivo = $session->get('fileName');
             $ruta_archivo = $session->get('fileRout');
-            $ruta_extraido = 'var/' . $nombre_archivo;
+            $ruta_extraido = '../var/uploads/' . $session->getid() . $nombre_archivo;
             $session->set('rutaExtraido', $ruta_extraido);
-            $info = new SplFileInfo($session->get('fileName'));
-            $extension = $info->getExtension();
+            $extension = $request->files->get('userfile')->getClientOriginalExtension();
             if (!$extension === 'jar' || !$extension === 'zip' || !$extension === '7z') {
                 $error = 1;
             } else {
@@ -44,12 +44,15 @@ class TranslatorController extends AbstractController
             return $this->render('translator/selectorLanguage.html.twig', [
                 'errorCode' => $error,
                 'langFiles' => $session->get('langFiles'),
-                $session->get('langFile'),
+                'request' => $request->files->get('userfile')->getPathName(),
+                'files' => $_FILES['userfile'],
+                'file' => $_FILES['userfile']['tmp_name'],
+                'langFilessadds' => $session->getid(),
             ]);
         } else {
             if ($session->get('langFile') == '.lang') {
-                $lang1 = $_REQUEST['lang1'];
-                $lang2 = $_REQUEST['lang2'];
+                $lang1 = $request->get('lang1');
+                $lang2 = $request->get('lang2');
                 $session->set('lang1', $lang1);
                 $session->set('lang2', $lang2);
                 $arrLang2 = [];
@@ -84,23 +87,18 @@ class TranslatorController extends AbstractController
                         }
                     }
                 }
-                $lang1 = $_REQUEST['lang1'];
-                $lang2 = $_REQUEST['lang2'];
-                $session->set('lang1', $lang1);
-                $session->set('lang2', $lang2);
             } elseif ($session->get('langFile') == '.json') {
             } else {
             }
             return $this->render('translator/translatorLanguage.html.twig', [
                 'mcmodInfo' => $session->get('mcmod_info'),
-                'request' => $_REQUEST,
                 'langFile' => $session->get('langFile'),
                 'arrLang1' => $arrLang1,
                 'arrLang2' => $arrLang2,
-                'lang1'=> $session->get('lang1'),
-                'lang2'=> $session->get('lang2'),
+                'lang1' => $session->get('lang1'),
+                'lang2' => $session->get('lang2'),
                 'session' => $session->all(),
-
+                'request' => $request,
             ]);
         }
     }

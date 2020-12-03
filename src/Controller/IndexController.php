@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Request;
 
 class IndexController extends AbstractController
 {
@@ -16,6 +17,9 @@ class IndexController extends AbstractController
     {
         $session = new Session();
         $session->start();
-        return $this->render('index/index.html.twig');
+        $request = Request::createFromGlobals();
+        return $this->render('index/index.html.twig', [
+          
+        ]);
     }
 }

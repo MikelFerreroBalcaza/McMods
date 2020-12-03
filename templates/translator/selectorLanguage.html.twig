@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block body %}
+<pre>
+	{{ dump() }}
+</pre>
 	{% if errorCode == 0 %}
 		<section class="sectiontranslator">
 			<form action="/translator" method="post">
