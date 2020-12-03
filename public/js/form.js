@@ -8,6 +8,7 @@ form.addEventListener(
 );
 let button = form.querySelector("#sub");
 button.addEventListener("click", function () {
+  showLoader();
   if (document.querySelectorAll(".error").length == 0) {
     let invalid = form.querySelectorAll(":invalid");
     for (let i = 0; i < invalid.length; i++) {
@@ -24,6 +25,7 @@ button.addEventListener("click", function () {
       }
     }, 2000);
   }
+  hideLoader();
 });
 
 $(function () {
