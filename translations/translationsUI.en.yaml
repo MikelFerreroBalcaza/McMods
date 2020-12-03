@@ -10,7 +10,7 @@ Header:
   Title: 'McMods Translator'
   Theme: 'Dark mode'
 Footer:
-  Copyright: '© 2020 Copyright'
+  Copyright: '© 2020-21 Copyright'
 Index:
   OpenFile: 'Open file...'
   Translate: 'Translate'
