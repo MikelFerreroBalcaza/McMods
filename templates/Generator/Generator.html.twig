@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
+{% endblock %}
+
+{% block body %}
+	<pre>
+        {{ dump() }}
+    </pre>
+{% endblock %}

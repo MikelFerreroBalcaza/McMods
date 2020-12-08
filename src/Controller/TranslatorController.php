@@ -28,7 +28,7 @@ class TranslatorController extends AbstractController
             }
             $nombre_archivo = $session->get('fileName');
             $ruta_archivo = $session->get('fileRout');
-            $ruta_extraido = '../var/uploads/' . $session->getid() . $nombre_archivo;
+            $ruta_extraido = '../var/uploads/' . $session->getid() . '/' . $nombre_archivo;
             $session->set('rutaExtraido', $ruta_extraido);
             $extension = $request->files->get('userfile')->getClientOriginalExtension();
             if (!$extension === 'jar' || !$extension === 'zip' || !$extension === '7z') {
@@ -72,6 +72,7 @@ class TranslatorController extends AbstractController
                     }
                 }
                 $arrLang1 = [];
+                $arr = [];
                 if (!(strtolower($lang2) == strtolower('new'))) {
                     $lang1 = $session->get('langDir') . $lang1;
                     $fp1 = fopen($lang1, 'r');
@@ -80,6 +81,7 @@ class TranslatorController extends AbstractController
                         if (!empty($line)) {
                             if (!($line[0] == '#')) {
                                 $item = explode('=', $line);
+                                array_push($arr, $item[0]);
                                 if (isset($item[1])) {
                                     $arrLang1[$item[0]] = $item[1];
                                 }
@@ -87,6 +89,7 @@ class TranslatorController extends AbstractController
                         }
                     }
                 }
+                $session->set('codelist', $arr);
             } elseif ($session->get('langFile') == '.json') {
             } else {
             }

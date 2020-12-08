@@ -18,8 +18,6 @@ class IndexController extends AbstractController
         $session = new Session();
         $session->start();
         $request = Request::createFromGlobals();
-        return $this->render('index/index.html.twig', [
-          
-        ]);
+        return $this->render('index/index.html.twig', []);
     }
 }

@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block body %}
-	<pre>
-        {{ dump() }}
-    </pre>
-	<form action="#" method="post">
+<pre>
+	{{ dump() }}
+</pre>
+	<form action="/generator" method="post">
 		<section class="sectiontranslator">
 			{% if mcmodInfo is defined %}
 				<section class="sectiontranslator">
@@ -93,10 +93,10 @@
 									{{key}}
 								</td>
 								<td>
-									<textarea class="{% if setTranslate == 1 %}review{% endif %}" name="{{key}}lang1" id="{{key}}lang1" cols="10" rows="1" readonly>{{item}}</textarea>
+									<textarea class="{% if setTranslate == 1 %}review{% endif %}" name="{{key}}1" id="{{key}}lang1" cols="10" rows="1" readonly>{{item}}</textarea>
 								</td>
 								<td>
-									<textarea class="{% if setTranslate == 1 %}review{% endif %}" name="{{key}}lang2" id="{{key}}lang2" cols="10" rows="1">{% if setTranslate == 1 %}{% for key2,item2 in arrLang2 %}{% if key2 == key %}{{item2}}{% endif %}{% endfor %}{% endif %}</textarea>
+									<textarea class="{% if setTranslate == 1 %}review{% endif %}" name="{{key}}" id="{{key}}lang2" cols="10" rows="1">{% if setTranslate == 1 %}{% for key2,item2 in arrLang2 %}{% if key2 == key %}{{item2}}{% endif %}{% endfor %}{% endif %}</textarea>
 								</td>
 								<td>
 									<button>
@@ -104,13 +104,13 @@
 									</button>
 								</td>
 								<td>
-									<input type="radio" name="{{key}}radio1" id="{{key}}radio1" value="checked" class="hide"><label for="{{key}}radio1">
+									{# <input type="radio" name="{{key}}radio1" id="{{key}}radio1" value="checked" class="hide"><label for="{{key}}radio1">
 										<i class="far fa-check-circle"></i>
 									</label><input type="radio" {% if setTranslate == 1 %} checked {% endif %} name="{{key}}radio2" id="{{key}}radio2" value="review" class="hide"><label for="{{key}}radio2">
 										<i class="far fa-dot-circle"></i>
 									</label><input type="radio" name="{{key}}radio3" id="{{key}}radio3" value="delete" class="hide"><label for="{{key}}radio3">
 										<i class="far fa-times-circle"></i>
-									</label>
+									</label> #}
 								</td>
 							</tr>
 						{% endfor %}
@@ -122,7 +122,7 @@
 				<small>{{"Translator.SubmitMensaje" | trans({}, 'translationsUI')}}</small>
 				<br>
 				<br>
-				{# <input type='submit' value='{{"Translator.Submit" | trans({}, ' translationsui')}}'> #}
+				<input type='submit' value="{{"Translator.Sub" | trans({}, 'translationsUI')}}">
 			</section>
 			<br>
 		</form>

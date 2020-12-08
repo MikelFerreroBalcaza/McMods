@@ -4,7 +4,7 @@ $(document).ready(function () {
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("form").addEventListener('submit', showLoader());
 });
-$('#es-ES > a,#en-GB > a,.btnanim v1').click(function () {
+$('#es-ES > a,#en-GB > a,div.ficha:nth-child(1) > ul:nth-child(1) > li:nth-child(3) > label:nth-child(1)').click(function () {
     showLoader();
 })
 function showLoader() {

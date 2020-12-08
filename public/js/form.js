@@ -6,6 +6,7 @@ form.addEventListener(
   },
   true
 );
+
 let button = form.querySelector("#sub");
 button.addEventListener("click", function () {
   if (document.querySelectorAll(".error").length == 0) {
@@ -18,13 +19,15 @@ button.addEventListener("click", function () {
       label.append(error);
     }
     window.setTimeout(function () {
+      hideLoader();
+    }, 100);
+    window.setTimeout(function () {
       var allErrors = document.querySelectorAll(".error");
       for (var i = 0; i < allErrors.length; i++) {
         allErrors[i].remove();
       }
     }, 2000);
   }
-  hideLoader();
 });
 
 $(function () {
