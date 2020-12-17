@@ -43,7 +43,11 @@ class GeneratorController extends AbstractController
             }
             fclose($file);
             $zip = new ZipArchive();
-            $nombreArchivoZip =  "../" . $session->get('fileName');
+            $dirRoot = '../public/var/downloads/' . $session->getId() . '/';
+            if (!file_exists($dirRoot)) {
+                mkdir($dirRoot, 0777, true);
+            }
+            $nombreArchivoZip = $dirRoot . substr($session->get('fileName'), 0, -4).'_McMods-Translator.jar';
             $rutaDelDirectorio =  $session->get('rutaExtraido') . '/';
             if (!$zip->open($nombreArchivoZip, ZipArchive::CREATE | ZipArchive::OVERWRITE)) {
                 exit("Error abriendo ZIP en $nombreArchivoZip");
@@ -62,20 +66,12 @@ class GeneratorController extends AbstractController
                 $nombreArchivo = substr($rutaAbsoluta, strlen($rutaDelDirectorio) + 16);
                 $zip->addFile($rutaAbsoluta, $nombreArchivo);
             }
-            $resultado = $zip->close();
-            if ($resultado) {
-                //echo "Archivo creado";
-            } else {
-                //echo "Error creando archivo";
-            }
+            $zip->close();
             rmDir_rf($session->get('rutaExtraido'));
         }
         return $this->render('Generator/Generator.html.twig', [
             'session' => $session,
-            'zip' => $zip,
-            'nombreArchivo' =>  $nombreArchivo,
-            'rutaAbsoluta' =>  $rutaAbsoluta,
-            'rutaDelDirectorio' =>  $rutaDelDirectorio,
+            'rutaDelDirectorio' =>  '/var/downloads/' . $session->getId() . '/' . substr($session->get('fileName'), 0, -4).'_McMods-Translator.jar',
         ]);
     }
 }

@@ -28,7 +28,7 @@ class TranslatorController extends AbstractController
             }
             $nombre_archivo = $session->get('fileName');
             $ruta_archivo = $session->get('fileRout');
-            $ruta_extraido = '../var/uploads/' . $session->getid() . '/' . $nombre_archivo;
+            $ruta_extraido = '../public/var/uploads/' . $session->getid() . '/' . $nombre_archivo;
             $session->set('rutaExtraido', $ruta_extraido);
             $extension = $request->files->get('userfile')->getClientOriginalExtension();
             if (!$extension === 'jar' || !$extension === 'zip' || !$extension === '7z') {
