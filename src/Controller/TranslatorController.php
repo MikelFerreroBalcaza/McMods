@@ -45,8 +45,8 @@ class TranslatorController extends AbstractController
                 'errorCode' => $error,
                 'langFiles' => $session->get('langFiles'),
                 'request' => $request->files->get('userfile')->getPathName(),
-                'files' => $_FILES['userfile'],
-                'file' => $_FILES['userfile']['tmp_name'],
+                'files' => $session->get('fileName'),
+                'file' => $session->get('fileRout'),
                 'langFilessadds' => $session->getid(),
             ]);
         } else {
