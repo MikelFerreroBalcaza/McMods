@@ -146,9 +146,28 @@ tr.tabletr>td:nth-child(5)>label:nth-child(4)>i:nth-child(1) {
   transform: translateY(-3px) scale(1.5);
 }
 
-.sectiontranslator {
-  margin: 0 1vh 0 1vh;
+.sectiontranslatorlang {
+  margin-top: 10%;
   padding: 1vh 0 1vh 0;
+}
+
+.sectiontranslatorlang form {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sectiontranslator {
+  padding: 1vh;
+}
+
+.stickyTranslate {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 section.sectiontranslator:nth-child(3) {
@@ -194,19 +213,34 @@ tr.tabletr>td:nth-child(5) {
 input,
 textarea {
   text-align: center;
+  border: none;
+  padding: 5px 10px;
+}
+
+input[type='submit']:hover {
+  background-color: var(--bg-color);
+  color: var(--main-bg-color);
+  border-color: var(--main-bg-color);
+  transform: scale(1.1);
 }
 
 .tabletr {
   height: 8vh;
   margin-top: 10px;
   margin-bottom: 5px;
-  border-bottom: 2px solid white;
+}
+
+.table1tr {
+  height: 3vh;
 }
 
 .tabletr td {
   vertical-align: middle;
 }
 
+.iconLang {
+  width: 35px;
+}
 
 .btnDowloads {
   margin: auto;
@@ -230,7 +264,8 @@ footer {
   font-size: 0.6em;
   height: 20px;
   width: 100%;
-  z-index: -99;
+  position: relative;
+  z-index: 99;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -710,4 +745,86 @@ input:checked+.slider:before {
     gap: 1.5vh;
     padding: 3vh 3.5vh;
   }
+}
+
+
+.select-sim {
+  width: 200px;
+  height: 35px;
+  line-height: 35px;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+}
+
+.select-sim::after {
+  content: "▼";
+  font-size: 0.5em;
+  font-family: arial;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translate(0, -50%);
+}
+
+.select-sim:hover::after {
+  content: "";
+}
+
+.select-sim:hover {
+  overflow: visible;
+}
+
+.select-sim:hover .options .option label {
+  display: inline-block;
+}
+
+.select-sim:hover .options {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 101%;
+  height: 320px;
+  overflow-y: scroll;
+}
+
+.select-sim .options .option {
+  overflow: hidden;
+}
+
+.select-sim:hover .options .option {
+  height: 35px;
+  overflow: hidden;
+}
+
+.select-sim .options .option img {
+  width: 35px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.select-sim .options .option label {
+  display: none;
+  padding: 0 10px;
+}
+
+.select-sim .options .option input {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  float: left;
+  display: inline-block;
+  position: absolute;
+  left: -10000px;
+}
+
+.select-sim .options .option input:checked+label {
+  display: block;
+  width: 100%;
+}
+
+.select-sim:hover .options .option input+label {
+  display: block;
 }

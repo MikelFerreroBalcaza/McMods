@@ -5,16 +5,13 @@
 {% endblock %}
 
 {% block body %}
-<pre>
-	{{ dump() }}
-</pre>
 	<form action="/generator" method="post">
 		<section class="sectiontranslator">
 			{% if mcmodInfo is defined %}
 				<section class="sectiontranslator">
 					<table>
 						<tbody>
-							<tr>
+							<tr class='table1tr'>
 								<th>{{"Translator.ModName" | trans({}, 'translationsUI')}}</th>
 								<th>{{"Translator.ModAuthor" | trans({}, 'translationsUI')}}</th>
 								<th>{{"Translator.ModVersion" | trans({}, 'translationsUI')}}</th>
@@ -48,7 +45,7 @@
 				<section class="sectiontranslator">
 					<table>
 						<tbody>
-							<tr>
+							<tr class='table1tr'>
 								<th>
 									<label for="modtranslator">{{"Translator.ModTranslator" | trans({}, 'translationsUI')}}</label>
 								</th>
@@ -79,7 +76,7 @@
 								{% endif %}
 							</th>
 							<th></th>
-							<th></th>
+							{# <th></th> #}
 						</tr>
 					</thead>
 					<tbody>
@@ -99,31 +96,34 @@
 									<textarea class="{% if setTranslate == 1 %}review{% endif %}" name="{{key}}" id="{{key}}lang2" cols="10" rows="1">{% if setTranslate == 1 %}{% for key2,item2 in arrLang2 %}{% if key2 == key %}{{item2}}{% endif %}{% endfor %}{% endif %}</textarea>
 								</td>
 								<td>
-									<button>
-										<i class="fas fa-retweet"></i>
+									<button class='translateBTN'>
+										<i class="fas fa-language"></i>
+										{# <img src='{{ asset('img/g-translate.svg') }}' alt='McMods Translator'> #}
+										{# <i class="fas fa-retweet"></i> #}
 									</button>
 								</td>
-								<td>
-									{# <input type="radio" name="{{key}}radio1" id="{{key}}radio1" value="checked" class="hide"><label for="{{key}}radio1">
+								{# <td>
+									<input type="radio" name="{{key}}radio1" id="{{key}}radio1" value="checked" class="hide"><label for="{{key}}radio1">
 										<i class="far fa-check-circle"></i>
 									</label><input type="radio" {% if setTranslate == 1 %} checked {% endif %} name="{{key}}radio2" id="{{key}}radio2" value="review" class="hide"><label for="{{key}}radio2">
 										<i class="far fa-dot-circle"></i>
 									</label><input type="radio" name="{{key}}radio3" id="{{key}}radio3" value="delete" class="hide"><label for="{{key}}radio3">
 										<i class="far fa-times-circle"></i>
-									</label> #}
-								</td>
+									</label>
+								</td> #}
 							</tr>
 						{% endfor %}
 					</tbody>
 				</table>
 			</section>
 			<br>
-			<section class='sectiontranslator'>
-				<small>{{"Translator.SubmitMensaje" | trans({}, 'translationsUI')}}</small>
+			<section class='sectiontranslator stickyTranslate'>
+				{# <small>{{"Translator.SubmitMensaje" | trans({}, 'translationsUI')}}</small> #}
 				<br>
 				<br>
-				<input type='submit' value="{{"Translator.Sub" | trans({}, 'translationsUI')}}">
+				<input type='submit' class='inputTranslate' value="{{"Translator.Sub" | trans({}, 'translationsUI')}}">
 			</section>
-			<br>
-		</form>
-	{% endblock %}
+		</section>
+		<br>
+	</form>
+{% endblock %}

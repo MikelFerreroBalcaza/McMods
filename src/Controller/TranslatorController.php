@@ -41,6 +41,7 @@ class TranslatorController extends AbstractController
                     dirLang($request, $ruta_extraido . '/');
                 }
             }
+            iconLang($request, '../public/img/svg/');
             return $this->render('translator/selectorLanguage.html.twig', [
                 'errorCode' => $error,
                 'langFiles' => $session->get('langFiles'),
@@ -48,6 +49,7 @@ class TranslatorController extends AbstractController
                 'files' => $session->get('fileName'),
                 'file' => $session->get('fileRout'),
                 'langFilessadds' => $session->getid(),
+                'iconlist' => $session->get('iconlist'),
             ]);
         } else {
             if ($session->get('langFile') == '.lang') {
@@ -138,5 +140,20 @@ function dirLang($request, $ruta)
             }
             closedir($dh);
         }
+    }
+}
+function iconLang($request, $ruta)
+{
+    $session = $request->getSession();
+    $arr = [];
+    if (is_dir($ruta)) {
+        if ($dh = opendir($ruta)) {
+            while (($file = readdir($dh)) !== false) {
+                if ($file != '.' && $file != '..') {
+                    array_push($arr, strtolower($file));
+                }
+            }
+        }
+        $session->set('iconlist', $arr);
     }
 }

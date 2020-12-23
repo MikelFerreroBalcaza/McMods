@@ -20,7 +20,8 @@ html,
 body,
 small,
 a,
-#menuToggle a {
+#menuToggle a,
+.translateBTN {
   color: var(--bg-color);
 }
 
@@ -101,10 +102,6 @@ input:focus+.slider {
   color: #e4405f;
 }
 
-.sectiontranslator {
-  border: solid 1px var(--bg-color);
-}
-
 .fa-check-circle {
   color: green;
 }
@@ -117,11 +114,37 @@ input:focus+.slider {
   color: red;
 }
 
-.fa-retweet {
-  color: #15aabf;
+input[type='submit']:hover {
+  background-color: var(--bg-color);
+  color: var(--main-bg-color);
+  border-color: var(--main-bg-color);
 }
 
-.checked {
+.tabletr {
+  border-bottom: 2px solid var(--bg-color);
+}
+
+.tabletr {
+  border-bottom: 2px solid var(--bg-color);
+}
+
+.select-sim {
+  background: var(--main-bg-color);
+}
+
+.select-sim:hover .options {
+  background: var(--main-bg-color);
+}
+
+.select-sim:hover .options .option input:checked+label {
+  background: var(--bg);
+}
+
+.options .option {
+  border-left: 1px solid var(--bg-color);
+}
+
+/* .checked {
   background-color: rgba(0, 128, 0, 0.5);
 }
 
@@ -131,4 +154,4 @@ input:focus+.slider {
 
 .delete {
   background-color: rgba(255, 0, 0, 0.5);
-}
+} */

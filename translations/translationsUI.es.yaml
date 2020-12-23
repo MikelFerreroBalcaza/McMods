@@ -28,8 +28,8 @@ Index:
 Translator:
   Error1: "La extensión del archivo no es correcta. Se permiten archivos .jar, .7z o .zip"
   Error2: "Ocurrió algún error al subir el fichero. No pudo guardarse."
-  Language1: "Idioma a traducir"
-  Language2: "Idioma al que traducir"
+  Language1: "Idioma a traducir:"
+  Language2: "Idioma al que traducir:"
   LanguageNew: "Idioma Nuevo"
   Translate: "Traducir"
   ModName: "Nombre"
