@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use SplFileInfo;
+use Symfony\Component\Validator\Constraints\Length;
 use ZipArchive;
 
 class TranslatorController extends AbstractController
@@ -18,7 +19,133 @@ class TranslatorController extends AbstractController
      */
     public function index(Request $request): Response
     {
-
+        $langsCodes = [
+            'af_za',
+            'ar_sa',
+            'ast_es',
+            'az_az',
+            'ba_ru',
+            'bar',
+            'be_by',
+            'bg_bg',
+            'br_fr',
+            'brb',
+            'bs_ba',
+            'ca_es',
+            'cs_cz',
+            'cy_gb',
+            'da_dk',
+            'de_at',
+            'de_ch',
+            'de_de',
+            'el_gr',
+            'en_au',
+            'en_ca',
+            'en_gb',
+            'en_nz',
+            'en_pt',
+            'en_ud',
+            'en_us',
+            'enp',
+            'enws',
+            'eo_uy',
+            'es_ar',
+            'es_cl',
+            'es_ec',
+            'es_es',
+            'es_mx',
+            'es_uy',
+            'es_ve',
+            'esan',
+            'et_ee',
+            'eu_es',
+            'fa_ir',
+            'fi_fi',
+            'fil_ph',
+            'fo_fo',
+            'fr_ca',
+            'fr_fr',
+            'fra_de',
+            'fy_nl',
+            'ga_ie',
+            'gd_gb',
+            'gl_es',
+            'got_de',
+            'gv_im',
+            'haw_us',
+            'he_il',
+            'hi_in',
+            'hr_hr',
+            'hu_hu',
+            'hy_am',
+            'id_id',
+            'ig_ng',
+            'io_en',
+            'is_is',
+            'isv',
+            'it_it',
+            'ja_jp',
+            'jbo_en',
+            'ka_ge',
+            'kab_kab',
+            'kk_kz',
+            'kn_in',
+            'ko_kr',
+            'ksh',
+            'kw_gb',
+            'la_la',
+            'lb_lu',
+            'li_li',
+            'lol_us',
+            'lt_lt',
+            'lv_lv',
+            'mi_nz',
+            'mk_mk',
+            'mn_mn',
+            'moh_ca',
+            'ms_my',
+            'mt_mt',
+            'nds_de',
+            'nl_be',
+            'nl_nl',
+            'nn_no',
+            'nb_no',
+            'nuk',
+            'oc_fr',
+            'oj_ca',
+            'ovd',
+            'pl_pl',
+            'pt_br',
+            'pt_pt',
+            'qya_aa',
+            'ro_ro',
+            'ru_ru',
+            'scn',
+            'sme',
+            'sk_sk',
+            'sl_si',
+            'so_so',
+            'sq_al',
+            'sr_sp',
+            'sv_se',
+            'swg',
+            'sxu',
+            'szl',
+            'ta_in',
+            'th_th',
+            'tlh_aa',
+            'tr_tr',
+            'tt_ru',
+            'tzl_tzl',
+            'uk_ua',
+            'val_es',
+            'vec_it',
+            'vi_vn',
+            'yi_de',
+            'yo_ng',
+            'zh_cn',
+            'zh_tw',
+        ];
         $session = $request->getSession();
         $error = 0;
         if (!$request->get('langform')) {
@@ -50,6 +177,8 @@ class TranslatorController extends AbstractController
                 'file' => $session->get('fileRout'),
                 'langFilessadds' => $session->getid(),
                 'iconlist' => $session->get('iconlist'),
+                'langsCodes' => $langsCodes,
+                'langsFile' => $session->get('langFile'),
             ]);
         } else {
             if ($session->get('langFile') == '.lang') {
@@ -57,8 +186,24 @@ class TranslatorController extends AbstractController
                 $lang2 = $request->get('lang2');
                 $session->set('lang1', $lang1);
                 $session->set('lang2', $lang2);
+                $arrLang1 = [];
                 $arrLang2 = [];
-                if (!(strtolower($lang2) == strtolower('new'))) {
+                $arr = [];
+                $lang1 = $session->get('langDir') . $lang1;
+                $fp1 = fopen($lang1, 'r');
+                while (!feof($fp1)) {
+                    $line = fgets($fp1);
+                    if (!empty($line)) {
+                        if (!($line[0] == '#')) {
+                            $item = explode('=', $line);
+                            array_push($arr, $item[0]);
+                            if (isset($item[1])) {
+                                $arrLang1[$item[0]] = $item[1];
+                            }
+                        }
+                    }
+                }
+                if (in_array($lang2, $session->get('langFiles'))) {
                     $lang2 = $session->get('langDir') . $lang2;
                     $fp2 = fopen($lang2, 'r');
                     while (!feof($fp2)) {
@@ -68,24 +213,6 @@ class TranslatorController extends AbstractController
                                 $item = explode('=', $line);
                                 if (isset($item[1])) {
                                     $arrLang2[$item[0]] = $item[1];
-                                }
-                            }
-                        }
-                    }
-                }
-                $arrLang1 = [];
-                $arr = [];
-                if (!(strtolower($lang2) == strtolower('new'))) {
-                    $lang1 = $session->get('langDir') . $lang1;
-                    $fp1 = fopen($lang1, 'r');
-                    while (!feof($fp1)) {
-                        $line = fgets($fp1);
-                        if (!empty($line)) {
-                            if (!($line[0] == '#')) {
-                                $item = explode('=', $line);
-                                array_push($arr, $item[0]);
-                                if (isset($item[1])) {
-                                    $arrLang1[$item[0]] = $item[1];
                                 }
                             }
                         }
@@ -119,12 +246,13 @@ function dirLang($request, $ruta)
                     if (preg_match('/lang/', $dr)) {
                         $session->set('langDir', $dr);
                         $session->set('langFiles', scandir($dr));
-                        if (substr(scandir($dr)[3], -5) == '.lang' || substr(scandir($dr)[3], -5) == '.json') {
-                            $session->set('langFile', substr(scandir($dr)[3], -5));
-                        } elseif (substr(scandir($dr)[4], -5) == '.lang' || substr(scandir($dr)[4], -5) == '.json') {
-                            $session->set('langFile', substr(scandir($dr)[3], -5));
-                        } else {
-                            $session->set('langFile', 'error');
+                        $fileLang = scandir($dr);
+                        for ($i = 0; $i < count($fileLang); $i++) {
+                            if (substr($fileLang[$i], -5) == '.lang' || substr($fileLang[$i], -5) == '.json') {
+                                $session->set('langFile', substr($fileLang[$i], -5));
+                            } else {
+                                $session->set('langFile', 'error');
+                            }
                         }
                     }
                     dirLang($request, $dr);

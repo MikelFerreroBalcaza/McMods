@@ -18,9 +18,11 @@ class AjaxController extends AbstractController
     {
         $session = $request->getSession();
         $error = 0;
-        $source = substr($session->get('lang1'), 0, 2);
-        $target = substr($session->get('lang2'), 0, 2);
-        $text = $_REQUEST['text'];
+        $source = $request->get('source'); //        $source = substr($session->get('lang1'), 0, 2);
+        $target = $request->get('target'); //        $target = substr($session->get('lang2'), 0, 2);
+        if ($target == 'new') {
+        }
+        $text = $request->get('text');
         $trans = new GoogleTranslate();
         $result = $trans->translate($source, $target, $text);
         $response = new Response();

@@ -120,11 +120,8 @@ input[type='submit']:hover {
   border-color: var(--main-bg-color);
 }
 
-.tabletr {
-  border-bottom: 2px solid var(--bg-color);
-}
-
-.tabletr {
+.tabletr,
+body > form:nth-child(3) > section:nth-child(1) > section:nth-child(1) > table:nth-child(1) {
   border-bottom: 2px solid var(--bg-color);
 }
 

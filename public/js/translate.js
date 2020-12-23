@@ -2,33 +2,39 @@ $('#tblcodetranslate').on('click', 'button', function (e) {
     let txtarea = $(this).parent().prev().children();
     let tr = $(this).parent().parent();
     let txtarea2 = $(this).parent().prev().prev().children();
-    let lang1 = '';
-    let lang2 = '';
-    if ($('#langtranslate').length) {
-        lang1 = $('#langtranslate').val()
+    let source = $('#langaTranslate').text().trim();
+    console.log(source);
+    let target = '';
+    if ($('#langtoTranslate')) {
+        target = $('#langtoTranslate').text().trim();
+    } else if ($('#langtranslate')) {
+        target = $('#langtranslate').val();
     }
-    e.preventDefault();
-    showLoader();
-    $.ajax({
-        type: "POST",
-        url: '/ajax',
-        data: {
-            lang1: lang1,
-            text: $(this).parent().prev().prev().children().text()
-        },
-        success: function (response) {
-            let arr = JSON.parse(response);
-            txtarea.val(arr['result']);
-            txtarea.removeClass();
-            txtarea.addClass('review');
-            txtarea2.removeClass();
-            txtarea2.addClass('review');
-            tr.removeClass();
-            tr.addClass('tabletr review');
-            hideLoader();
-        }
-    });
-
+    console.log(target);
+    if (target != '') {
+        e.preventDefault();
+        showLoader();
+        $.ajax({
+            type: "POST",
+            url: '/ajax',
+            data: {
+                source: source,
+                target: target,
+                text: $(this).parent().prev().prev().children().text()
+            },
+            success: function (response) {
+                let arr = JSON.parse(response);
+                txtarea.val(arr['result']);
+                txtarea.removeClass();
+                txtarea.addClass('review');
+                txtarea2.removeClass();
+                txtarea2.addClass('review');
+                tr.removeClass();
+                tr.addClass('tabletr review');
+                hideLoader();
+            }
+        });
+    }
 });
 $('#tblcodetranslate').on('click', 'input', function (e) {
     let tr = $(this).parent().parent();

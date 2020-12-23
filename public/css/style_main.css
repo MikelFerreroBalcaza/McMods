@@ -171,7 +171,7 @@ tr.tabletr>td:nth-child(5)>label:nth-child(4)>i:nth-child(1) {
 }
 
 section.sectiontranslator:nth-child(3) {
-  padding: 1vh 0 0 0;
+  padding: 1vh;
   border-bottom: none;
 }
 
@@ -232,6 +232,10 @@ input[type='submit']:hover {
 
 .table1tr {
   height: 3vh;
+}
+
+.table1tr+tr td {
+  padding-bottom: 10px;
 }
 
 .tabletr td {

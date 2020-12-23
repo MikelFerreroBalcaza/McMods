@@ -4,7 +4,9 @@
 	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
 {% endblock %}
 
-{% block body %}
+{% block body %}<pre>
+	{{ dump() }}
+</pre>
 	<form action="/generator" method="post">
 		<section class="sectiontranslator">
 			{% if mcmodInfo is defined %}
@@ -67,12 +69,12 @@
 					<thead>
 						<tr>
 							<th>{{"Translator.LanguageCode" | trans({}, 'translationsUI')}}</th>
-							<th>{{lang1|slice(0, 5)}}</th>
-							<th>
+							<th id='langaTranslate'>{{lang1|slice(0, -5)}}</th>
+							<th id='langtoTranslate'>
 								{% if lang2 == 'new' %}
 									<input type="text" name="langtranslate" id="langtranslate" placeholder="{{"Translator.Placeholder" | trans({}, 'translationsUI')}}">
 								{% else %}
-									{{lang2|slice(0, 5)}}
+									{{lang2|slice(0, -5)}}
 								{% endif %}
 							</th>
 							<th></th>
