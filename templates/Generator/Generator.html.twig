@@ -1,11 +1,19 @@
 {% extends 'base.html.twig' %}
-
+{% block styles %}
+	<style>
+		footer {
+			position: fixed;
+			bottom: 0;
+		}
+	</style>
+{% endblock %}
 {% block title %}
 	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
 {% endblock %}
 
 {% block body %}
-	<a href="{{rutaDelDirectorio}}" class="btnDowloads" target="_blank" download>
-		<i class="fa fa-download"></i>
-		Download</a>
+	<section class='sectionGenerator'>
+		<a href="{{rutaDelDirectorio}}" class="btnDowloads" target="_blank" download><i class="fa fa-download"></i> {{"Generator.Download" | trans({}, 'translationsUI')}}</a>
+		<a href="/" class='linkReturn'>{{"Generator.GoBack" | trans({}, 'translationsUI')}}</a>
+	</section>
 {% endblock %}

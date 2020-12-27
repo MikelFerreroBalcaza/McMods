@@ -42,3 +42,6 @@ Translator:
   Placeholder: "Código del idioma"
   SubmitMensaje: "Solo las lineas verificadas (marcadas en verde) serán incluidas en la traducción"
   Sub: "Finalizar"
+Generator:
+  Download: "Descargar"
+  GoBack: "Volver"

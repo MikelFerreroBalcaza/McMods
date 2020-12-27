@@ -67,7 +67,7 @@ class GeneratorController extends AbstractController
                 $zip->addFile($rutaAbsoluta, $nombreArchivo);
             }
             $zip->close();
-            rmDir_rf($session->get('rutaExtraido'));
+            //rmDir_rf($session->get('rutaExtraido'));
         }
         return $this->render('Generator/Generator.html.twig', [
             'session' => $session,

@@ -3,6 +3,7 @@
   --main-bg-color: #363a3f;
   --btn-bg-color: #f9c559;
   --bg: #2a2e32;
+  --bg2: #2a2e3269;
   --shadow: rgba(0, 0, 0, 0.5);
   --gradient-dark: #2c2c34;
   --gradient-light: #1779ff;
@@ -125,6 +126,10 @@ body>form:nth-child(3)>section:nth-child(1)>section:nth-child(1)>table:nth-child
   border-bottom: 2px solid var(--bg-color);
 }
 
+.tabletr:nth-child(even),#tbltranslate {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .select-sim {
   background: var(--main-bg-color);
 }
@@ -135,6 +140,10 @@ body>form:nth-child(3)>section:nth-child(1)>section:nth-child(1)>table:nth-child
 
 .select-sim:hover .options .option input:checked+label {
   background: var(--bg);
+}
+
+div.option:hover {
+  background: var(--bg2);
 }
 
 .options .option {

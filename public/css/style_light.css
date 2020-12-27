@@ -3,6 +3,7 @@
   --main-bg-color: #ffff;
   --btn-bg-color: #f9c559;
   --bg: #b8b8b8;
+  --bg2: #b8b8b869;
   --shadow: rgba(0, 0, 0, 0.5);
   --gradient-dark: #bcbcbc;
   --gradient-light: #000;
@@ -121,8 +122,13 @@ input[type='submit']:hover {
 }
 
 .tabletr,
-body > form:nth-child(3) > section:nth-child(1) > section:nth-child(1) > table:nth-child(1) {
+body>form:nth-child(3)>section:nth-child(1)>section:nth-child(1)>table:nth-child(1) {
   border-bottom: 2px solid var(--bg-color);
+}
+
+.tabletr:nth-child(even),
+#tbltranslate {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .select-sim {
@@ -135,6 +141,10 @@ body > form:nth-child(3) > section:nth-child(1) > section:nth-child(1) > table:n
 
 .select-sim:hover .options .option input:checked+label {
   background: var(--bg);
+}
+
+div.option:hover {
+  background: var(--bg2);
 }
 
 .options .option {

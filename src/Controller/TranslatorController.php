@@ -220,6 +220,29 @@ class TranslatorController extends AbstractController
                 }
                 $session->set('codelist', $arr);
             } elseif ($session->get('langFile') == '.json') {
+                $lang1 = $request->get('lang1');
+                $lang2 = $request->get('lang2');
+                $session->set('lang1', $lang1);
+                $session->set('lang2', $lang2);
+                $arrLang1 = [];
+                $arrLang2 = [];
+                $arr = [];
+                $lang1file = $session->get('langDir') . $lang1;
+                $data = file_get_contents($lang1file);
+                $products = json_decode($data, true);
+                foreach ($products as $key => $product) {
+                    $arrLang1[$key] = $product;
+                    array_push($arr, $key);
+                }
+                if (in_array($lang2, $session->get('langFiles'))) {
+                    $lang2file = $session->get('langDir') . $lang2;
+                    $data = file_get_contents($lang2file);
+                    $products = json_decode($data, true);
+                    foreach ($products as $key => $product) {
+                        $arrLang2[$key] = $product;
+                    }
+                }
+                $session->set('codelist', $arr);
             } else {
             }
             return $this->render('translator/translatorLanguage.html.twig', [
