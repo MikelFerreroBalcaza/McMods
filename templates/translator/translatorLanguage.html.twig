@@ -4,12 +4,10 @@
 	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
 {% endblock %}
 
-{% block body %}<pre>
-	{{ dump() }}
-</pre>
+{% block body %}
 	<form action="/generator" method="post">
 		<section class="sectiontranslator">
-			{% if mcmodInfo is defined %}
+			{% if mcmodInfo is not empty %}
 				<section class="sectiontranslator">
 					<table id='tbltranslate'>
 						<tbody>

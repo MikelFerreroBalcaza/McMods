@@ -258,6 +258,14 @@ class TranslatorController extends AbstractController
         }
     }
 }
+/**
+ * Recorre una ruta de forma recursiva y encuentra el directorio 'lang', ademas si existe el
+ * fichero 'mcmod.info' los recorre y genera un array con todos sus datos, también almacena la
+ * extensión de los ficheros de idioma
+ *
+ * @param $request Objeto request proporcionado por Symfony
+ * @param $ruta Ruta del archivo descomprimido
+**/
 function dirLang($request, $ruta)
 {
     $session = $request->getSession();
@@ -293,6 +301,12 @@ function dirLang($request, $ruta)
         }
     }
 }
+/**
+ * Recorre una ruta de forma recursiva y almacena en un arry los idiomas con los que cuenta el complemento
+ *
+ * @param $request Objeto request proporcionado por Symfony
+ * @param $ruta Ruta de la carpeta 'lang'
+**/
 function iconLang($request, $ruta)
 {
     $session = $request->getSession();

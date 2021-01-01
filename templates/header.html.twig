@@ -32,10 +32,12 @@
 	<h1 class='hide'>{{"Header.Title" | trans({}, 'translationsUI')}}</h1>
 	<a href="/"><img src='{{ asset('img/McMods-Alfa.png') }}' alt='McMods Translator'></a>
 	<div id='conten_mode'>
-		<i>{{"Header.Theme" | trans({}, 'translationsUI')}}</i>
+		<p class='hide'>{{"Header.Theme" | trans({}, 'translationsUI')}}</p>
+		<i class="fas fa-sun"></i>
 		<label class='switch'>
 			<input type='checkbox' checked id='btn_mode'>
 			<span class='slider round'></span>
 		</label>
+		<i class="fas fa-moon"></i>
 	</div>
 </header>

@@ -12,13 +12,10 @@
 {% endblock %}
 
 {% block body %}
-<pre>
-	{{ dump() }}
-</pre>
 	{% if errorCode == 0 %}
 		<section class="sectiontranslatorlang">
 			<form action="/translator" method="post">
-				<label for="lang1">{{"Translator.Language1" | trans({}, 'translationsUI')}}</label>
+				<label class='labelLang' for="lang1">{{"Translator.Language1" | trans({}, 'translationsUI')}}</label>
 				<div class="select-sim" id="select-lang1">
 					<div class="options">
 						{% for langFile in langFiles %}
@@ -36,7 +33,7 @@
 						{% endfor %}
 					</div>
 				</div>
-				<label for="lang2">{{"Translator.Language2" | trans({}, 'translationsUI')}}</label>
+				<label class='labelLang' for="lang2">{{"Translator.Language2" | trans({}, 'translationsUI')}}</label>
 				<div class="select-sim" id="select-lang2">
 					<div class="options">
 						{% for langCode in langsCodes %}

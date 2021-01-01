@@ -25,20 +25,56 @@ class GeneratorController extends AbstractController
                 unlink($archivo);
             }
             $file = fopen($archivo, 'a');
-            foreach ($request->request as $ky => $value) {
-                $key = preg_replace('/_/', '.', $ky);
-                if ($key == 'modtranslator') {
-                    if (!empty($value)) {
-                        fwrite($file, "# Translated by: {$value}\n");
+            if ($session->get('langFile') == '.json') {
+                fwrite($file, "{\n");
+                $cont = 0;
+                foreach ($request->request as $ky => $value) {
+                    $cont++;
+                    $key = preg_replace('/_/', '.', $ky);
+                    if ($key == 'modtranslator') {
+                        if (!empty($value)) {
+                            if ($cont == sizeof($request->request)) {
+                                fwrite($file, '"Translated.by":"' . $value . '"');
+                            } else {
+                                fwrite($file, '"Translated.by":"' . $value . '",');
+                            }
+                        }
+                    }
+                    if ($key == 'modtranslationversion') {
+                        if (!empty($value)) {
+                            if ($cont == sizeof($request->request)) {
+                                fwrite($file, '"Translation.Version":"' . $value . '"');
+                            } else {
+                                fwrite($file, '"Translation.Version":"' . $value . '",');
+                            }
+                        }
+                    }
+                    if (in_array($key, $session->get('codelist'))) {
+                        $value = preg_replace('/"/', "'", $value);
+                        if ($cont == sizeof($request->request)) {
+                            fwrite($file, '"' . $key . '":"' . $value . '"');
+                        } else {
+                            fwrite($file, '"' . $key . '":"' . $value . '",');
+                        }
                     }
                 }
-                if ($key == 'modtranslationversion') {
-                    if (!empty($value)) {
-                        fwrite($file, "# Translation Version: {$value}\n");
+                fwrite($file, "}\n");
+            } else if ($session->get('langFile') == '.lang') {
+                foreach ($request->request as $ky => $value) {
+                    $key = preg_replace('/_/', '.', $ky);
+                    if ($key == 'modtranslator') {
+                        if (!empty($value)) {
+                            fwrite($file, "# Translated by: {$value}\n");
+                        }
                     }
-                }
-                if (in_array($key, $session->get('codelist'))) {
-                    fwrite($file, "{$key}={$value}\n");
+                    if ($key == 'modtranslationversion') {
+                        if (!empty($value)) {
+                            fwrite($file, "# Translation Version: {$value}\n");
+                        }
+                    }
+                    if (in_array($key, $session->get('codelist'))) {
+                        fwrite($file, "{$key}={$value}\n");
+                    }
                 }
             }
             fclose($file);
@@ -47,7 +83,7 @@ class GeneratorController extends AbstractController
             if (!file_exists($dirRoot)) {
                 mkdir($dirRoot, 0777, true);
             }
-            $nombreArchivoZip = $dirRoot . substr($session->get('fileName'), 0, -4).'_McMods-Translator.jar';
+            $nombreArchivoZip = $dirRoot . substr($session->get('fileName'), 0, -4) . '_McMods-Translator.jar';
             $rutaDelDirectorio =  $session->get('rutaExtraido') . '/';
             if (!$zip->open($nombreArchivoZip, ZipArchive::CREATE | ZipArchive::OVERWRITE)) {
                 exit("Error abriendo ZIP en $nombreArchivoZip");
@@ -71,46 +107,15 @@ class GeneratorController extends AbstractController
         }
         return $this->render('Generator/Generator.html.twig', [
             'session' => $session,
-            'rutaDelDirectorio' =>  '/var/downloads/' . $session->getId() . '/' . substr($session->get('fileName'), 0, -4).'_McMods-Translator.jar',
+            'rutaDelDirectorio' =>  '/var/downloads/' . $session->getId() . '/' . substr($session->get('fileName'), 0, -4) . '_McMods-Translator.jar',
         ]);
     }
 }
-
-function dirZip($request, $ruta)
-{
-    $session = $request->getSession();
-    if (is_dir($ruta)) {
-        if ($dh = opendir($ruta)) {
-            while (($file = readdir($dh)) !== false) {
-                if (is_dir($ruta . $file) && $file != '.' && $file != '..') {
-                    $dr = $ruta . $file . '/';
-                    if (preg_match('/lang/', $dr)) {
-                        $session->set('langDir', $dr);
-                        $session->set('langFiles', scandir($dr));
-                        if (substr(scandir($dr)[3], -5) == '.lang' || substr(scandir($dr)[3], -5) == '.json') {
-                            $session->set('langFile', substr(scandir($dr)[3], -5));
-                        } elseif (substr(scandir($dr)[4], -5) == '.lang' || substr(scandir($dr)[4], -5) == '.json') {
-                            $session->set('langFile', substr(scandir($dr)[3], -5));
-                        } else {
-                            $session->set('langFile', 'error');
-                        }
-                    }
-                    dirZip($request, $dr);
-                } elseif ((!is_dir($ruta . $file)) && $file != '.' && $file != '..') {
-                    if ($file == 'mcmod.info') {
-                        $data = file_get_contents($ruta . $file);
-                        $products = json_decode($data, true);
-                        foreach ($products as $product) {
-                            $session->set('mcmod_info',  $product);
-                        }
-                    }
-                }
-            }
-            closedir($dh);
-        }
-    }
-}
-
+/**
+ * Recorre una ruta de forma recursiva y elimina todo su contenido.
+ *
+ * @param $dir Ruta del directorio a eliminar
+**/
 function rmDir_rf($dir)
 {
     foreach (glob($dir . '/*') as $file_dir) {
