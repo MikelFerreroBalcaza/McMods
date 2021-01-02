@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<section class="aboutus">
+			<div>
+				<h2>{{"About.Title" | trans({}, 'translationsUI')}}</h2>
+				<p>{{"About.Txt1" | trans({}, 'translationsUI')}}</p>
+				<p>{{"About.Txt2" | trans({}, 'translationsUI')}}</p>
+				<p>{{"About.Txt3" | trans({}, 'translationsUI')}}</p>
+				<p>{{"About.Txt4" | trans({}, 'translationsUI')}}</p>
+				<p>{{"About.Txt5" | trans({}, 'translationsUI')}}</p>
+				<ul>
+					<li>{{"About.TxtOption1" | trans({}, 'translationsUI')}}</li>
+					<li>{{"About.TxtOption2" | trans({}, 'translationsUI')}}</li>
+					<li>{{"About.TxtOption3" | trans({}, 'translationsUI')}}</li>
+					<li>{{"About.TxtOption4" | trans({}, 'translationsUI')}}</li>
+					<li>{{"About.TxtOption5" | trans({}, 'translationsUI')}}</li>
+					<li>{{"About.TxtOption6" | trans({}, 'translationsUI')}}</li>
+				</ul>
+				{% include "cta.html.twig" %}
+				<div>
+					<a href="/" class='linkReturn'>{{"Generator.GoBack" | trans({}, 'translationsUI')}}</a>
+				</div>
+			</div>
+
+		</section>
+	</main>
+{% endblock %}

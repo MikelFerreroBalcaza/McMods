@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<section class="legal">
+			<div>
+				<h2>{{"Legal.Title" | trans({}, 'translationsUI')}}</h2>
+				<div>
+					<h3>{{"Legal.LSSITitle" | trans({}, 'translationsUI')}}</h3>
+					<p>{{"Legal.LSSITxt1" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.LSSITxt2" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.LSSITxt3" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.IdentitiTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.Identiti1" | trans({}, 'translationsUI')}}<i>{{"Legal.IdentitiName" | trans({}, 'translationsUI')}}</i>
+					</p>
+					<p>{{"Legal.Identiti2" | trans({}, 'translationsUI')}}<i>{{"Legal.IdentitiEmail" | trans({}, 'translationsUI')}}</i>
+					</p>
+				</div>
+				<div>
+					<h4>{{"Legal.ObjetTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.ObjetTxt" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.PrivacityTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.PrivacityTxt" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.IndustrialTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.IndustrialTxt" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.ObligationsTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.ObligationsTxt1" | trans({}, 'translationsUI')}}</p>
+					<ul class="number">
+						<li>{{"Legal.ObligationsUl1option1" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ObligationsUl1option2" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ObligationsUl1option3" | trans({}, 'translationsUI')}}</li>
+					</ul>
+					<p>{{"Legal.ObligationsTxt2" | trans({}, 'translationsUI')}}</p>
+					<ul class="number">
+						<li>{{"Legal.ObligationsUl2option1" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ObligationsUl2option2" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ObligationsUl2option3" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ObligationsUl2option4" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ObligationsUl2option5" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ObligationsUl2option6" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ObligationsUl2option7" | trans({}, 'translationsUI')}}</li>
+					</ul>
+					<p>{{"Legal.ObligationsTxt3" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.ResponTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.ResponTxt1" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.ResponTxt2" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.ResponTxt3" | trans({}, 'translationsUI')}}</p>
+					<ul class="number">
+						<li>{{"Legal.ResponUl1" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ResponUl2" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ResponUl3" | trans({}, 'translationsUI')}}</li>
+						<li>{{"Legal.ResponUl4" | trans({}, 'translationsUI')}}</li>
+					</ul>
+					<p>{{"Legal.ResponTxt4" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.ResponTxt5" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.ProtectTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.ProtectTxt1" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.CookiesTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.CookiesTxt1" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.CookiesTxt2" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.CookiesTxt3" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.CookiesTxt4" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.DeclaTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.DeclaTxt1" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.ForceTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.ForceTxt1" | trans({}, 'translationsUI')}}</p>
+				</div>
+				<div>
+					<h4>{{"Legal.ResuTitle" | trans({}, 'translationsUI')}}</h4>
+					<p>{{"Legal.ResuTxt1" | trans({}, 'translationsUI')}}</p>
+					<p>{{"Legal.ResuTxt2" | trans({}, 'translationsUI')}}</p>
+				</div>
+				{% include "cta.html.twig" %}
+				<div id='linkReturn'>
+					<a href="/" class='linkReturn'>{{"Generator.GoBack" | trans({}, 'translationsUI')}}</a>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}

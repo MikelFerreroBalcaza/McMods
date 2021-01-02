@@ -12,10 +12,12 @@
 {% endblock %}
 
 {% block body %}
-	<section class='sectionGenerator'>
-		<a href="{{rutaDelDirectorio}}" class="btnDowloads" target="_blank" download>
-			<i class="fa fa-download"></i>
-			{{"Generator.Download" | trans({}, 'translationsUI')}}</a>
-		<a href="/" class='linkReturn'>{{"Generator.GoBack" | trans({}, 'translationsUI')}}</a>
-	</section>
+	<main>
+		<section class='sectionGenerator'>
+			<a href="{{rutaDelDirectorio}}" class="btnDowloads" target="_blank" download>
+				<i class="fa fa-download"></i>
+				{{"Generator.Download" | trans({}, 'translationsUI')}}</a>
+			<a href="/" class='linkReturn'>{{"Generator.GoBack" | trans({}, 'translationsUI')}}</a>
+		</section>
+	</main>
 {% endblock %}

@@ -18,8 +18,8 @@ class AjaxController extends AbstractController
     {
         $session = $request->getSession();
         $error = 0;
-        $source = $request->get('source'); //        $source = substr($session->get('lang1'), 0, 2);
-        $target = $request->get('target'); //        $target = substr($session->get('lang2'), 0, 2);
+        $source = $request->get('source');
+        $target = $request->get('target');
         if ($target == 'new') {
         }
         $text = $request->get('text');
@@ -30,13 +30,4 @@ class AjaxController extends AbstractController
             'result' => $result,
         )));
     }
-}
-
-function checkLang($lang)
-{
-    $b = false;
-    if (preg_match("/^[a-zA-Z]{2}\_[A-Za-z]{2}$/", $lang)) {
-        $b = true;
-    }
-    return $b;
 }

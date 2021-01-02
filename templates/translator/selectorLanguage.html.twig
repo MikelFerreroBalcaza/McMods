@@ -13,46 +13,48 @@
 
 {% block body %}
 	{% if errorCode == 0 %}
-		<section class="sectiontranslatorlang">
-			<form action="/translator" method="post">
-				<label class='labelLang' for="lang1">{{"Translator.Language1" | trans({}, 'translationsUI')}}</label>
-				<div class="select-sim" id="select-lang1">
-					<div class="options">
-						{% for langFile in langFiles %}
-							{% if langFile != '.' and langFile != '..' %}
-								{% set iconLang = langFile|slice(0, -5)|lower  ~ '.svg' %}
+		<main>
+			<section class="sectiontranslatorlang">
+				<form action="/translator" method="post">
+					<label class='labelLang' for="lang1">{{"Translator.Language1" | trans({}, 'translationsUI')}}</label>
+					<div class="select-sim" id="select-lang1">
+						<div class="options">
+							{% for langFile in langFiles %}
+								{% if langFile != '.' and langFile != '..' %}
+									{% set iconLang = langFile|slice(0, -5)|lower  ~ '.svg' %}
+									{% set iconLangRoot = 'img/svg/' ~ iconLang %}
+									<div class="option">
+										<input type="radio" name="lang1" value="{{langFile}}" id="lang1{{langFile}}" {% if langFile =='en_us.lang' or langFile =='en_us.json' %} checked {% endif %}/>
+										<label for="lang1{{langFile}}">
+											{% if iconLang in iconlist %}<img src="{{ asset(iconLangRoot)}}" alt=""/>
+											{% endif %}
+											{{langFile|slice(0, -5)}}</label>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					<label class='labelLang' for="lang2">{{"Translator.Language2" | trans({}, 'translationsUI')}}</label>
+					<div class="select-sim" id="select-lang2">
+						<div class="options">
+							{% for langCode in langsCodes %}
+								{% set iconLang = langCode ~ '.svg' %}
 								{% set iconLangRoot = 'img/svg/' ~ iconLang %}
+								{% set langFile = langCode ~ langsFile %}
 								<div class="option">
-									<input type="radio" name="lang1" value="{{langFile}}" id="lang1{{langFile}}" {% if langFile =='en_us.lang' or langFile =='en_us.json' %} checked {% endif %}/>
-									<label for="lang1{{langFile}}">
+									<input type="radio" name="lang2" value="{{langFile}}" id="lang2{{langFile}}" {% if langFile == 'es_es.lang' or langFile == 'es_es.json' %} checked {% endif %}/>
+									<label for="lang2{{langFile}}">
 										{% if iconLang in iconlist %}<img src="{{ asset(iconLangRoot)}}" alt=""/>
 										{% endif %}
 										{{langFile|slice(0, -5)}}</label>
 								</div>
-							{% endif %}
-						{% endfor %}
+							{% endfor %}
+						</div>
 					</div>
-				</div>
-				<label class='labelLang' for="lang2">{{"Translator.Language2" | trans({}, 'translationsUI')}}</label>
-				<div class="select-sim" id="select-lang2">
-					<div class="options">
-						{% for langCode in langsCodes %}
-							{% set iconLang = langCode ~ '.svg' %}
-							{% set iconLangRoot = 'img/svg/' ~ iconLang %}
-							{% set langFile = langCode ~ langsFile %}
-							<div class="option">
-								<input type="radio" name="lang2" value="{{langFile}}" id="lang2{{langFile}}" {% if langFile == 'es_es.lang' or langFile == 'es_es.json' %} checked {% endif %}/>
-								<label for="lang2{{langFile}}">
-									{% if iconLang in iconlist %}<img src="{{ asset(iconLangRoot)}}" alt=""/>
-									{% endif %}
-									{{langFile|slice(0, -5)}}</label>
-							</div>
-						{% endfor %}
-					</div>
-				</div>
-				<input type="submit" value="{{"Translator.Translate" | trans({}, 'translationsUI')}}" name="langform">
-			</form>
-		</section>
+					<input type="submit" value="{{"Translator.Translate" | trans({}, 'translationsUI')}}" name="langform">
+				</form>
+			</section>
+		</main>
 	{% elseif errorCode == 1 %}
 		{{"Translator.Error1" | trans({}, 'translationsUI')}}
 

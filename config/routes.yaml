@@ -11,6 +11,30 @@ translator:
 generator:
   path: /generator
   controller: App\Controller\GeneratorController::index
+tutorial:
+  path: /tutorial
+  controller: App\Controller\TutorialController::index
+about:
+  path: /about
+  controller: App\Controller\AboutController::index
+contact:
+  path: /contact
+  controller: App\Controller\ContactController::index
 ajax:
   path: /ajax
   controller: App\Controller\AjaxController::ajax
+help:
+  path: /help
+  controller: App\Controller\HelpController::index
+development:
+  path: /development
+  controller: App\Controller\DevelopmentController::index
+dataprotection:
+  path: /dataprotection
+  controller: App\Controller\DataprotectionController::index
+equipment:
+  path: /equipment
+  controller: App\Controller\EquipmentController::index
+legalwarning:
+  path: /legalwarning
+  controller: App\Controller\LegalWarningController::index

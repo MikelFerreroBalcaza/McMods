@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<section class="contact">
+			<div>
+				<h2>{{"Contact.Title" | trans({}, 'translationsUI')}}</h2>
+				<div>
+					<form method="post" accept-charset="UTF-8">
+						<label for="Email">{{"Contact.Email" | trans({}, 'translationsUI')}}</label><input id="Email" type="text" name="Email" value="">
+						<label for="Message">{{"Contact.Message" | trans({}, 'translationsUI')}}
+						</label>
+						<textarea id="Message" name="Message"></textarea>
+						<input type="submit" value="{{"Contact.Send" | trans({}, 'translationsUI')}}">
+					</form>
+				</div>
+				<div id="div-rrss">
+					<div>
+						<h2>{{"Index.FollowUs" | trans({}, 'translationsUI')}}</h2>
+						<ul class="rrss">
+							<li>
+								<a href="">{{"Index.Facebook" | trans({}, 'translationsUI')}}<i class="fab fa-facebook-f"></i>
+								</a>
+							</li>
+							<li>
+								<a href="">{{"Index.Twitter" | trans({}, 'translationsUI')}}<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a href="">{{"Index.Instagram" | trans({}, 'translationsUI')}}<i class="fab fa-instagram"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{% include "cta.html.twig" %}
+				<div>
+					<a href="/" class='linkReturn'>{{"Generator.GoBack" | trans({}, 'translationsUI')}}</a>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}

@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
-
+{% block styles %}
+	<style>
+		footer {
+			position: fixed;
+			bottom: 0;
+		}
+	</style>
+{% endblock %}
 {% block title %}
 	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
 {% endblock %}
@@ -35,19 +42,19 @@
 			</form>
 			<div class="ficha">
 				<ul>
-					<li><a href="" class="btnanim v2"><span></span><span></span><span></span><span></span>{{"Index.Tutorial" | trans({}, 'translationsUI')}}</a></li>
-					<li><a href="" class="btnanim v2"><span></span><span></span><span></span><span></span>{{"Index.About" | trans({}, 'translationsUI')}}</a></li>
-					<li><a href="" class="btnanim v2"><span></span><span></span><span></span><span></span>{{"Index.Contact" | trans({}, 'translationsUI')}}</a></li>
+					<li><a href="/tutorial" class="btnanim v2"><span></span><span></span><span></span><span></span>{{"Index.Tutorial" | trans({}, 'translationsUI')}}</a></li>
+					<li><a href="/about" class="btnanim v2"><span></span><span></span><span></span><span></span>{{"Index.About" | trans({}, 'translationsUI')}}</a></li>
+					<li><a href="/contact" class="btnanim v2"><span></span><span></span><span></span><span></span>{{"Index.Contact" | trans({}, 'translationsUI')}}</a></li>
 				</ul>
 			</div>
 		</section>
 		<section id="info">
 			<div id="enlaces">
 				<ul>
-					<li><a href="">{{"Index.Development" | trans({}, 'translationsUI')}}</a></li>
-					<li><a href="">{{"Index.DataProtection" | trans({}, 'translationsUI')}}</a></li>
-					<li><a href="">{{"Index.Equipment" | trans({}, 'translationsUI')}}</a></li>
-					<li><a href="">{{"Index.LegalWarning" | trans({}, 'translationsUI')}}</a></li>
+					<li><a href="/about">{{"Index.Development" | trans({}, 'translationsUI')}}</a></li>
+					<li><a href="/equipment">{{"Index.Equipment" | trans({}, 'translationsUI')}}</a></li>
+					<li><a href="/legalwarning">{{"Index.LegalWarning" | trans({}, 'translationsUI')}}</a></li>
+
 				</ul>
 			</div>
 			<div id="div-rrss">

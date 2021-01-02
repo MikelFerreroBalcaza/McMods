@@ -14,7 +14,10 @@ html,
 .slider,
 #info,
 .sectiontranslator,
-.ficha {
+.ficha,
+section.aboutus div,
+section.contact div,
+section.legal div {
   background-color: var(--bg);
 }
 
@@ -126,7 +129,8 @@ body>form:nth-child(3)>section:nth-child(1)>section:nth-child(1)>table:nth-child
   border-bottom: 2px solid var(--bg-color);
 }
 
-.tabletr:nth-child(even),#tbltranslate {
+.tabletr:nth-child(even),
+#tbltranslate {
   background-color: rgba(0, 0, 0, 0.2);
 }
 

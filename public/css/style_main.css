@@ -813,6 +813,159 @@ input:checked+.slider:before {
   }
 }
 
+/** ABOUTUS **/
+
+section.aboutus {
+  margin: auto;
+  padding: 5vh 7vh;
+  width: 80%;
+}
+
+section.aboutus div div {
+  text-align: center
+}
+
+section.aboutus div {
+  padding: 5vh 7vh;
+  text-align: justify;
+}
+
+section.aboutus h2 {
+  text-align: center;
+  font-size: 40px;
+  margin: 20px auto;
+}
+
+section.aboutus p {
+  margin: 15px auto;
+}
+
+section.aboutus ul li {
+  margin: 15px auto;
+}
+
+section.aboutus ul {
+  text-align: left;
+  width: 80%;
+  margin: 0 auto;
+  list-style: square;
+}
+
+/** LEGAL **/
+
+section.legal {
+  margin: auto;
+  padding: 5vh 7vh;
+  width: 80%;
+}
+
+section.legal div {
+  padding: 5vh 7vh;
+  text-align: justify;
+}
+
+section.legal h2 {
+  text-align: center;
+  font-size: 40px;
+  margin: 20px auto;
+}
+
+section.legal h3 {
+  text-align: center;
+  font-size: 30px;
+  margin: 18px auto;
+}
+
+section.legal h4 {
+  font-size: 28px;
+  margin: 20px auto;
+}
+
+section.legal p {
+  margin: 15px auto;
+}
+
+section.legal i {
+  font-style: italic;
+}
+
+section.legal ul li {
+  margin: 15px auto;
+}
+
+section.legal ul {
+  text-align: justify;
+  width: 80%;
+  margin: 0 auto;
+  list-style: square;
+}
+
+section.legal ul.number {
+  text-align: justify;
+  width: 80%;
+  margin: 0 auto;
+  list-style: decimal;
+}
+
+section.legal #linkReturn {
+  text-align: center;
+}
+
+/** CONTACT **/
+
+section.contact {
+  margin: auto;
+  padding: 5vh 7vh;
+  width: 80%;
+}
+
+section.contact #div-rrss {
+  padding: 5vh 7vh 5vh;
+}
+
+section.contact #div-rrss i {
+  font-size: 30px;
+}
+
+section.contact div div {
+  text-align: center
+}
+
+section.contact div {
+  padding: 5vh 7vh;
+  text-align: justify;
+}
+
+section.contact h2 {
+  text-align: center;
+  font-size: 40px;
+  margin: 20px auto;
+}
+
+section.contact form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+section.contact form input,
+section.contact form textarea {
+  width: 80%;
+  margin: 10px;
+}
+
+section.contact ul li {
+  margin: 15px auto;
+}
+
+section.contact ul {
+  text-align: left;
+  width: 80%;
+  margin: 0 auto;
+  list-style: none;
+}
+
 /** RESPONSIVE **/
 
 @media screen and (max-width: 717px) {

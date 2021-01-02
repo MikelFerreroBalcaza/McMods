@@ -105,7 +105,7 @@ class GeneratorController extends AbstractController
             $zip->close();
             //rmDir_rf($session->get('rutaExtraido'));
         }
-        return $this->render('Generator/Generator.html.twig', [
+        return $this->render('generator/generator.html.twig', [
             'session' => $session,
             'rutaDelDirectorio' =>  '/var/downloads/' . $session->getId() . '/' . substr($session->get('fileName'), 0, -4) . '_McMods-Translator.jar',
         ]);

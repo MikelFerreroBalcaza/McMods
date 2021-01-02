@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block styles %}
+	<style>
+		footer {
+			position: fixed;
+			bottom: 0;
+		}
+	</style>
+{% endblock %}
+{% block title %}
+	<title>{{"App.Title" | trans({}, 'translationsUI')}}</title>
+{% endblock %}
+
+{% block body %}
+	<main></main>
+{% endblock %}

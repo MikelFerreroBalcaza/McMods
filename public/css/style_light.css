@@ -14,7 +14,10 @@ html,
 .slider,
 #info,
 .sectiontranslator,
-.ficha {
+.ficha,
+section.aboutus div,
+section.contact div,
+section.legal div {
   background-color: var(--bg);
 }
 
